@@ -3,7 +3,6 @@ h1{
     font-size: 16px;
 }
 
-/* Общий стиль для всех полей */
 .input_box {
     width: 100%;
     margin-bottom: 20px;
@@ -23,43 +22,35 @@ h1{
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Item Title */
 input.input {
     height: 45px;
 }
 
-/* Category */
 select.input {
     height: 45px;
     cursor: pointer;
 }
 
-/* Description */
 textarea.input {
     min-height: 120px;
     resize: vertical;
     line-height: 1.5;
 }
 
-/* Эффект при нажатии на поле */
 .input_box .input:focus {
     border-color: #63c7b5;
     box-shadow: 0 0 5px rgba(140, 177, 212, 0.3);
 }
 
-/* Цвет подсказки */
 .input_box .input::placeholder {
     color: #999;
 }
-
-
 
 .photo-upload-container {
     margin: 15px 0;
     font-family: sans-serif;
 }
 
-/* Стилизация кнопки выбора файлов */
 .upload-btn {
     display: flex;
     flex-direction: column;
@@ -83,7 +74,6 @@ textarea.input {
     margin-bottom: 5px;
 }
 
-/* Сетка для отображения выбранных фото */
 .preview-container {
     display: flex;
     flex-wrap: wrap;
@@ -91,13 +81,11 @@ textarea.input {
     margin-top: 15px;
 }
 
-/* Контейнер для одной миниатюры */
 .preview-item {
     position: relative;
     width: 80px;
     height: 80px;
 }
-
 .preview-item img {
     width: 100%;
     height: 100%;
@@ -106,7 +94,6 @@ textarea.input {
     border: 1px solid #ddd;
 }
 
-/* Кнопка удаления отдельного фото (крестик) */
 .remove-btn {
     position: absolute;
     top: -5px;
@@ -124,7 +111,6 @@ textarea.input {
     justify-content: center;
     line-height: 1;
 }
-
 
 .upload-btn {
     display: flex;
