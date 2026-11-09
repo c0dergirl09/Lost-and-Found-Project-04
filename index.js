@@ -23,8 +23,6 @@ if (form) {
     alert('Please fill in all required fields!');
     return;
 }
-        
-
         btn.disabled = true;
         btn.textContent = 'Saving...';
         message.textContent = '';
@@ -56,14 +54,14 @@ try {
 console.log('Selected files:', fileInput.files);
 console.log('Number of files:', fileInput.files.length);
 
-    // Проверяем, выбрал ли пользователь фотографию
+    
     if (fileInput.files.length > 0) {
         var file = fileInput.files[0];
 
         var extension = file.name.split('.').pop().toLowerCase();
 var fileName = Date.now() + '.' + extension;
 
-        // Загружаем фотографию в Supabase Storage
+       
         const { data: uploadData, error: uploadError } = await db
             .storage
             .from('item-images')
@@ -73,7 +71,7 @@ var fileName = Date.now() + '.' + extension;
             throw uploadError;
         }
 
-        // Получаем публичную ссылку на фотографию
+       
         const { data: urlData } = db
             .storage
             .from('item-images')
@@ -82,10 +80,10 @@ var fileName = Date.now() + '.' + extension;
         imageUrl = urlData.publicUrl;
     }
 
-    // Добавляем ссылку на фотографию в объявление
+    
     report.image_url = imageUrl;
 
-    // Сохраняем объявление в таблицу items
+   
     const { data, error } = await db
         .from('items')
         .insert([report])
@@ -97,7 +95,7 @@ var fileName = Date.now() + '.' + extension;
 //hteeeeee
     var sound = document.getElementById('success-sound');
     if (sound) {
-        sound.load(); // Подгружаем трек заранее
+        sound.load(); 
     }
      if (error) {
         throw error;
@@ -106,7 +104,7 @@ var fileName = Date.now() + '.' + extension;
     message.textContent = 'Report submitted successfully!';
     message.style.color = 'green';
     
-    // 2. Воспроизведение звука
+   
     if (sound) {
         sound.currentTime = 0;
         sound.play().catch(function(err) {
