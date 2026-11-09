@@ -32,9 +32,6 @@ function openItem(id) {
     window.location.href = `post.html?id=${id}`;
 }
 
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('notificationBtn');
     const panel = document.getElementById('notificationPanel');
@@ -44,7 +41,6 @@ console.log("Окно:", panel);
 console.log("Кнопка закрытия:", closeBtn);
     if (!btn || !panel || !closeBtn) return;
 
-     
     btn.addEventListener('click', (event) => {
         event.stopPropagation();
 
@@ -55,14 +51,12 @@ console.log("Кнопка закрытия:", closeBtn);
             panel.classList.contains('show')
         );
     });
-
     
     closeBtn.addEventListener('click', () => {
         panel.classList.remove('show');
         btn.setAttribute('aria-expanded', 'false');
     });
 
- 
     document.addEventListener('click', (event) => {
         if (
             !panel.contains(event.target) &&
@@ -72,7 +66,6 @@ console.log("Кнопка закрытия:", closeBtn);
             btn.setAttribute('aria-expanded', 'false');
         }
     });
-
      
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
@@ -97,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
             buttons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-             
             const filterValue = button.getAttribute('data-filter');
             console.log("Нажата кнопка категории:", filterValue);
 
