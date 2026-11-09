@@ -1,33 +1,24 @@
-
-
-
-//from here
 document.addEventListener("DOMContentLoaded", function() {
-    // Находим все ссылки внутри блока с табами
     const tabLinks = document.querySelectorAll(".tabs a");
     
     tabLinks.forEach(link => {
         link.addEventListener("click", function(e) {
-            e.preventDefault(); // Отменяем стандартный переход по ссылке-якорю
-
-            // 1. Убираем класс 'active' у всех вкладок (ссылок)
+            e.preventDefault(); 
             tabLinks.forEach(tab => tab.classList.remove("active"));
-            // Добавляем класс 'active' той, на которую кликнули
             this.classList.add("active");
 
-            // 2. Скрываем все блоки с контентом форм
+          
             const tabContents = document.querySelectorAll(".tabs-content > div");
             tabContents.forEach(content => {
                 content.style.display = "none";
                 content.classList.remove("active");
             });
 
-            // 3. Находим нужный блок по id из атрибута href (например, #login-tab-content)
             const targetId = this.getAttribute("href");
             const targetContent = document.querySelector(targetId);
             
             if (targetContent) {
-                targetContent.style.display = "block"; // Показываем нужную форму
+                targetContent.style.display = "block"; 
                 targetContent.classList.add("active");
             }
         });
@@ -141,7 +132,6 @@ function updateInputFiles() {
     fileInput.files = dataTransfer.files;
 }
 
-// Функция для синхронизации массива файлов с инпутом формы
 function updateInputFiles() {
     const dataTransfer = new DataTransfer();
     selectedFiles.forEach(file => dataTransfer.items.add(file));
@@ -157,7 +147,6 @@ console.log("Окно:", panel);
 console.log("Кнопка закрытия:", closeBtn);
     if (!btn || !panel || !closeBtn) return;
 
-    // Open and close by clicking the bell
     btn.addEventListener('click', (event) => {
         event.stopPropagation();
 
@@ -169,13 +158,11 @@ console.log("Кнопка закрытия:", closeBtn);
         );
     });
 
-    // Close using the X button
     closeBtn.addEventListener('click', () => {
         panel.classList.remove('show');
         btn.setAttribute('aria-expanded', 'false');
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (event) => {
         if (
             !panel.contains(event.target) &&
@@ -186,7 +173,6 @@ console.log("Кнопка закрытия:", closeBtn);
         }
     });
 
-    // Close with Escape
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
             panel.classList.remove('show');
@@ -286,13 +272,10 @@ document.addEventListener('DOMContentLoaded', () => {
         container.appendChild(card);
     });
 });
-// LOAD USER PROFILE FROM SUPABASE
 
 document.addEventListener("DOMContentLoaded", async function () {
 
     console.log("Loading profile...");
-
-    // Check current user
     const { data: { user }, error: userError } = await db.auth.getUser();
 
     console.log("User:", user);
@@ -304,7 +287,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // Get account information
     const { data: account, error: accountError } = await db
         .from("accounts")
         .select("*")
@@ -319,7 +301,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // Show information on page
     document.getElementById("profile-name").textContent =
         account.full_name;
 
@@ -342,11 +323,7 @@ console.log("PROFILE SCRIPT LOADED");
 document.addEventListener("DOMContentLoaded", async function () {
 
     console.log("PAGE READY");
-
-    // Check Supabase connection
     console.log("Database:", db);
-
-    // Check current user
     const result = await db.auth.getUser();
 
     console.log("USER RESULT:", result);
@@ -357,8 +334,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const user = result.data.user;
-
-    // Load account
     const accountResult = await db
         .from("accounts")
         .select("*")
@@ -377,7 +352,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    // Display data
     document.getElementById("profile-name").textContent =
         accountResult.data.full_name;
 
